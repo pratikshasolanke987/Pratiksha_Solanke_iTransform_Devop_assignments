@@ -1,2 +1,0 @@
-1.In Git how do you revert a commit that has already been pushed and made public?
-2.How to remove a file from git without removing it from your file system?

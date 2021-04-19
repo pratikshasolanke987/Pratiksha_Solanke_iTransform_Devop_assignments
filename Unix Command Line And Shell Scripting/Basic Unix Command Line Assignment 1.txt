@@ -107,7 +107,7 @@ Ans: $cd ..
 Ans: $cd ../..
 
 32)change the current directory to home(logged in user's) directory
-Ans:$ 
+Ans:$ udo usermod -d /usr/pratiksha pratiksha
 
 33)How to check all the command used from the prompt (Command History)
 Ans: $sudo useradd -m -d
@@ -148,7 +148,7 @@ Ans: Non-login process(shell) calls ~/.bashrc
 Ans: They initialize and configure a shell upon login and. perform cleanup operations upon logout and used for user applications, server processes and operating system settings.
 
 44)Explain the Order of file usage from the system/user's home directory when user logs in to the System.
-Ans: 
+Ans: /etc/profile->/etc/profile.d->~/.bash_profile->~/.bashrc->etc/bashrc
 
 45)What are Shell Variables, list major shell variables and what do they represent?
 Ans: Variables store the data in the form of characters and numbers.Shell variables are used to store information and they can by the shell only.
@@ -176,10 +176,15 @@ Ans: Local variable is declared inside a function whereas Global variable is dec
 Ans: ~/.profile
 
 53)Show the real life use case of exporting a variable
-Ans: 
+Ans: i) You can export a variable from parent process to the child processes. 
+      ii) Simply set the value for a variable before exporting " export name="[=value]"
+      iii) export -p to check the exported variables
 
 54)Convert the above script file into a command, The file should run with "myappp" instead of "myapp.sh"
-Ans:
+Ans:- Give execution rights to the script file using chmod u+x file_name.sh
+     - Append the path of the exectuable script file to path cariable in .bash_profile file
+     - Write a code in script file starting with shebang "#!/usr/bin/env bash" and then save it.
+     - Now you need to source .bash_profile once then you can run your myapp.sh as a command.
 
 55)What is Globbing? Explain in depth with examples?
 Ans:Globbing is an operation that recognizes the wildcard pattern and expands it into its path name.
@@ -194,7 +199,7 @@ Ans: ./line_count.sh file1.txt
 Ans: egrep "[a-z][0-9]" small.txt
 
 59)List all entries that name length more than 5 characters
-Ans:
+Ans: ls ??????*
 
 60)What is Quoting? and Why do we need it?
 Ans:Quoting is used to remove the special meaning of certain characters or words to the shell. Quoting can be used to disable special treatment for special characters, to prevent reserved words from being recognized as such, and to prevent parameter expansion.
