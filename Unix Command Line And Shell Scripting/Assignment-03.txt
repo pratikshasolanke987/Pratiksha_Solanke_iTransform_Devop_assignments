@@ -1,0 +1,20 @@
+Develop a script that creates, sets and displays two variables to the terminal when run. Within this script, add comments to explain what the script is doing, what each variable is and, using inline comments, what each command is doing.
+
+Ans:
+
+
+#Creates and displays two variable as output
+
+
+# this command sets value Pratiksha and Solanke to variable Firstname 
+# and Lastname respectively
+Firstname=Pratiksha
+Lastname=Solanke
+# this command is used to print the variable value assigned to them
+echo "Firstname is " $Firstname
+echo "Lastname is " $Lastname
+
+Output:
+ math.sh
+Firstname is  Pratiksha
+Lastname is  Solanke

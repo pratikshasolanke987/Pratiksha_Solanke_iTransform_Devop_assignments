@@ -1,0 +1,54 @@
+Write a script that assigns a variable that contains a list of all shell scripts (*.sh) in the current directory (command redirection). Using the 'for'statement from the course, iterate through that list of files and display the filename of each and cat out the contents to the terminal.
+
+
+Ans:
+
+
+LIST=$(ls *.sh)
+   
+for i in $LIST
+do      	
+    itr=$( cat $i )
+    echo "THE CONTENT OF $i are:"
+    echo $itr
+done
+
+
+
+
+
+
+
+
+OUTPUT:
+
+THE CONTENT OF animals.sh are:
+#!/usr/bin/env bash case $1 in cat) echo "meoo";; dog) echo "bhoo";; cow) echo "humm";; *) echo "unknown animal";; esac
+THE CONTENT OF assignment.sh are:
+#!/usr/bin/env bash # MYUSERNAME="Pratiksha" # MYPASSWORD="xxxxxx" # STARTOFSCRIPT="#!/usr/bin/env bash" # ENDOFSCRIPT=$(date) # echo "$MYUSERNAME" # echo "$MYPASSWORD" # echo "$STARTOFSCRIPT" # echo "$ENDOFSCRIPT" function cap(){ echo "Hey I am Pratiksha" echo "Good to see you" 1>&2 } echo "Assignment completed $(cap 2>/dev/null)" echo "Hey I am Pratiksha" echo "Assignment completed 2>/dev/null "
+THE CONTENT OF box.sh are:
+#!/usr/bin/env bash # drawline(){ # declare line="" # declare char="-" # for (( i=0; i<$1; ++i )); do # line="${line}${char}" # done # printf "%s\n" "$line" # } # [[ ! $1 ]] && exit 0 # declare -i len="${#1} + 4" # drawline len # printf "| %s |\n" "$1" # drawline len declare -i count=0 count_line (){ while read -r; do ((++count)) done echo $count } $* | count_line echo $count
+THE CONTENT OF create_script.sh are:
+#!/usr/bin/env bash #Is there an arguments? if [[ ! $1 ]]; then echo "Missing argument" exit 1 fi scriptname="$1" bindir="${HOME}/bin" filename="${bindir}/${scriptname}" if [[ -e $filename ]]; then echo "File ${filename} already exists" exit 1 fi if type "$scriptname" > /dev/null 2>&1; then echo "there is already a coomand ${scriptname}" exit 1 fi #Check if [[ ! -d $bindir ]]; then #if not:create bin directory if mkdir "$bindir"; then echo "created ${bindir}" else echo "could not create ${bindir}." exit 1 fi fi echo '#!/usr/bin/env bash' > "$filename" chmod u+x "$filename" $EDITOR "$filename"
+THE CONTENT OF demo.sh are:
+#!/usr/bin/env bash sum(){ echo $(( $1 + $2)) } start_with_a(){ [[ $1 == animals.sh assignment.sh ]]; return $? } if start_with_a ax; then echo "yup" else echo "nope" fi echo $(sum 4 5)
+THE CONTENT OF drawline.sh are:
+#!/usr/bin/env bash if [[ ! $1 ]]; then echo "need line length arguments" >&2 exit 1 fi #check if [[ $1 =~ ^[0-9]+$ ]]; then length="$1" else echo "Length has to be a number" >&2 exit 1 fi char="=" if [[ $2 ]]; then char="$2" fi line= for (( i=0; i<length; ++i )); do line="${line}${char}" done printf "%s\n" "$line" exit 0
+THE CONTENT OF hello.sh are:
+#!/usr/bin/env bash # File: ntmy.sh function ntmy { echo "Nice to meet you $1" }
+THE CONTENT OF inner.sh are:
+#!/usr/bin/env bash echo "ineer before :$var" var="inner" echo "inner after :$var"
+THE CONTENT OF math.sh are:
+#!/usr/bin/env bash LIST=$(ls *.sh) for i in $LIST do itr=$( cat $i ) echo "THE CONTENT OF $i are:" echo $itr done
+THE CONTENT OF mycat.sh are:
+#!/bin/bash -x while read -r; do printf "%s\n" "$REPLY" done < "$1"
+THE CONTENT OF outer.sh are:
+#!/usr/bin/env bash declare -x var="outer" echo "outer before :$var" inner.sh echo "outer after :$var"
+THE CONTENT OF printargs.sh are:
+#!/usr/bin/env bash for a in "$@"; do echo $a; done
+THE CONTENT OF scriptname.sh are:
+#!/usr/bin/env bash echo "Running $0"
+THE CONTENT OF stripto.sh are:
+#!/usr/bin/env bash if [[ ! $1 ]]; then echo "Need first arguments" >&2 exit 1 fi while read -r; do if [[ $REPLY =~ $1 ]]; then echo "$REPLY" break fi done while read -r; do echo "$REPLY" done exit 0
+THE CONTENT OF stripto2.sh are:
+#!/usr/bin/env bash if [[ ! $1 ]]; then echo "Need first arguments" >&2 exit 1 fi found="" #read upto first match while read -r; do if [[ ! $found ]]; then if [[ $REPLY =~ $1 ]]; then found="yep" else continue fi fi echo "$REPLY" done exit 0

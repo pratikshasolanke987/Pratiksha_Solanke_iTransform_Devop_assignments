@@ -1,0 +1,25 @@
+Write a script that sets FOUR variables:
+
+MYUSERNAME
+MYPASSWORD
+STARTOFSCRIPT
+ENDOFSCRIPT
+
+Populate the first two with some default value and use command redirection to set the third and fourth value to the date/time of when the script was started and completed. Within the script, be sure to display the values to the terminal when run.
+
+
+Ans:
+MYUSERNAME="Pratiksha"
+MYPASSWORD="xxxxxx"
+STARTOFSCRIPT="#!/usr/bin/env bash"
+ENDOFSCRIPT=$(date)
+ echo "$MYUSERNAME"
+ echo "$MYPASSWORD"
+ echo "$STARTOFSCRIPT"
+ echo "$ENDOFSCRIPT"
+
+Output:
+Pratiksha
+xxxxxx
+#!/usr/bin/env bash
+Sat Apr 17 15:46:09 IST 2021
