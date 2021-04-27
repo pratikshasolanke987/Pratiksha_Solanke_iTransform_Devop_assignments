@@ -1,3 +1,24 @@
 Create a script that accepts a command line parameter intended to be the name of a directory. With the script, attempt to change to the indicated directory, be sure to redirect errors to /dev/null on the command as we will be providing our own messaging.
 
 Test the results of the command to change directories. If it was successful, indicate success and display the contents of the directory. If it was not successful, indicate we cannot change directories and exit to the terminal with a custom exit code (less than 200).
+
+Ans:
+
+
+ls $1 2> /dev/null
+if [[ $? = 0 ]]
+then
+    echo "It was a success"
+else
+    echo "Not working and exit code is "$?""
+fi
+
+
+Output:
+
+-a.jpg  animals.sh     create_script.sh  drawline.sh  journal   new        outer.sh       six.txt     stripto2.sh
+4       assignment.sh  csl               four.txt     math.sh   new.html   printargs.sh   small.txt   superhero.txt
+45      box.sh         demo              hello.sh     mycat     new2       sample.txt     stripto     tn
+6       conut          demo.sh           inner.sh     mycat.sh  notes.txt  scriptname.sh  stripto.sh
+It was a success
+
